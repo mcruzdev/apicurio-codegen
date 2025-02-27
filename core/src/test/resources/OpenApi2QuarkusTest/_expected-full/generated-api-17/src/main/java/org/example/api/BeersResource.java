@@ -26,6 +26,7 @@ public interface BeersResource {
   @Path("/{beerId}")
   @GET
   @Produces("application/json")
+  @Operation(summary = "Returns full information about a single beer.")
   Beer getBeer(@PathParam("beerId") int beerId);
 
   /**
