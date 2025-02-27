@@ -33,6 +33,7 @@ public class JaxRsProjectSettings {
     public String javaPackage = "org.example.api";
     public String classNamePrefix = "";
     public String classNameSuffix = "";
+    public String beanScope = "";
 
     /**
      * Constructor.
@@ -166,5 +167,13 @@ public class JaxRsProjectSettings {
 
     public void setClassNameSuffix(String classNameSuffix) {
         this.classNameSuffix = classNameSuffix;
+    }
+
+    public String getBeanScope() {
+        return beanScope;
+    }
+
+    public void setBeanScope(String beanScope) {
+        this.beanScope = beanScope;
     }
 }

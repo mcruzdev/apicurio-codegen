@@ -475,7 +475,7 @@ public class OpenApi2JaxRs {
 
         sortImports(jaxRsApp);
 
-        return jaxRsApp.toString() + "\n";
+        return jaxRsApp + "\n";
     }
 
     /**
@@ -518,6 +518,14 @@ public class OpenApi2JaxRs {
                 .addAnnotation(String.format("%s.ws.rs.Path", topLevelPackage))
                 .setStringValue(jaxRsPath)
                 .getOrigin();
+
+        try {
+            if (!this.settings.beanScope.isBlank()) {
+                BuiltInScopes scope = BuiltInScopes.valueOf(this.settings.beanScope);
+                resourceInterface.addAnnotation(String.format("%s.ws.rs.%s", topLevelPackage, scope.getJavaName()));
+            }
+        } catch (IllegalArgumentException ignored) {
+        }
 
         interfaceInfo.getMethods().forEach(methodInfo -> {
             MethodSource<JavaInterfaceSource> operationMethod = resourceInterface.addMethod()

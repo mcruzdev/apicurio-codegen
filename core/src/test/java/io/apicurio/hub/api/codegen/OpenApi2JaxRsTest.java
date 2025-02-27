@@ -18,6 +18,7 @@ package io.apicurio.hub.api.codegen;
 
 import java.io.IOException;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -37,7 +38,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testGenerateFull() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/beer-api.json", UpdateOnly.no, Reactive.no, "_expected-full/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/beer-api.json", UpdateOnly.no, Reactive.no, "_expected-full/generated-api", false, "");
     }
 
     /**
@@ -46,7 +47,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
     @Test
     public void testGenerateFullPrefixed() throws IOException {
         doFullTest("OpenApi2JaxRsTest/beer-api.json", UpdateOnly.no, Reactive.no, false,
-                "_expected-full-prefixed/generated-api", "Test", "", false);
+                "_expected-full-prefixed/generated-api", "Test", "", false, "");
     }
 
     /**
@@ -55,7 +56,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
     @Test
     public void testGenerateFullSuffixed() throws IOException {
         doFullTest("OpenApi2JaxRsTest/beer-api.json", UpdateOnly.no, Reactive.no, false,
-                "_expected-full-suffixed/generated-api", "", "Test", false);
+                "_expected-full-suffixed/generated-api", "", "Test", false, "");
     }
 
     /**
@@ -63,7 +64,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testGenerateFull_GatewayApi() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/gateway-api.json", UpdateOnly.no, Reactive.no, "_expected-gatewayApi-full/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/gateway-api.json", UpdateOnly.no, Reactive.no, "_expected-gatewayApi-full/generated-api", false, "");
     }
 
     /**
@@ -71,7 +72,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testGenerateFull_RegistryApi() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/registry-api.json", UpdateOnly.no, Reactive.no, "_expected-registryApi-full/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/registry-api.json", UpdateOnly.no, Reactive.no, "_expected-registryApi-full/generated-api", false, "");
     }
 
     /**
@@ -79,7 +80,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testGenerateFull_RegistryApiV2() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/registry-api-v2.json", UpdateOnly.yes, Reactive.no, "_expected-registry-api-v2/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/registry-api-v2.json", UpdateOnly.yes, Reactive.no, "_expected-registry-api-v2/generated-api", false, "");
     }
 
     /**
@@ -87,7 +88,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testGenerateUpdateOnly() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/beer-api.json", UpdateOnly.yes, Reactive.no, "_expected-full/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/beer-api.json", UpdateOnly.yes, Reactive.no, "_expected-full/generated-api", false, "");
     }
 
     /**
@@ -95,7 +96,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testGenerateFullReactive() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/beer-api.json", UpdateOnly.no, Reactive.yes, "_expected-reactive-full/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/beer-api.json", UpdateOnly.no, Reactive.yes, "_expected-reactive-full/generated-api", false, "");
     }
 
     /**
@@ -104,7 +105,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
     @Test
     public void testGenerateWithCLIGenCI() throws IOException {
         doFullTest("OpenApi2JaxRsTest/beer-api.json", UpdateOnly.no, Reactive.no, true,
-                "_expected-full-with-ci/generated-api", "", "", false);
+                "_expected-full-with-ci/generated-api", "", "", false, "");
     }
 
     /**
@@ -113,7 +114,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
     @Test
     public void testGenerateFull_Issue885Api() throws IOException {
         // Note: I can't seem to get this working in the maven build, but it works in Eclipse.
-        doFullTest("OpenApi2JaxRsTest/issue-885-api.json", UpdateOnly.no, Reactive.no, "_expected-issue885Api-full/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/issue-885-api.json", UpdateOnly.no, Reactive.no, "_expected-issue885Api-full/generated-api", false, "");
     }
 
     /**
@@ -121,7 +122,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testGenerateFull_MultipleMediaTypes() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/mmt-api.json", UpdateOnly.no, Reactive.no, "_expected-mmt-full/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/mmt-api.json", UpdateOnly.no, Reactive.no, "_expected-mmt-full/generated-api", false, "");
     }
 
     /**
@@ -129,7 +130,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testGenerateFull_ContextRoot() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/context-root.json", UpdateOnly.no, Reactive.no, "_expected-context-root/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/context-root.json", UpdateOnly.no, Reactive.no, "_expected-context-root/generated-api", false, "");
     }
 
     /**
@@ -137,7 +138,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testGenerateFull_SimpleType() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/simple-type.json", UpdateOnly.no, Reactive.no, "_expected-simple-type/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/simple-type.json", UpdateOnly.no, Reactive.no, "_expected-simple-type/generated-api", false, "");
     }
 
     /**
@@ -145,7 +146,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testGenerateFull_BeanAnnotations() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/bean-annotations.json", UpdateOnly.no, Reactive.no, "_expected-bean-annotations/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/bean-annotations.json", UpdateOnly.no, Reactive.no, "_expected-bean-annotations/generated-api", false, "");
     }
 
     /**
@@ -153,7 +154,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testGenerateFull_Inheritance() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/inheritance.json", UpdateOnly.yes, Reactive.no, "_expected-inheritance/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/inheritance.json", UpdateOnly.yes, Reactive.no, "_expected-inheritance/generated-api", false, "");
     }
 
     /**
@@ -161,7 +162,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testGenerateFull_NZDAX() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/nzdax.json", UpdateOnly.yes, Reactive.no, "_expected-nzdax/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/nzdax.json", UpdateOnly.yes, Reactive.no, "_expected-nzdax/generated-api", false, "");
     }
 
     /**
@@ -169,7 +170,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testGenerateFull_CustomResponseType() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/custom-response-type.json", UpdateOnly.yes, Reactive.no, "_expected-custom-response-type/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/custom-response-type.json", UpdateOnly.yes, Reactive.no, "_expected-custom-response-type/generated-api", false, "");
     }
 
     /**
@@ -177,7 +178,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testSchemaExtends() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/schema-extends.json", UpdateOnly.yes, Reactive.no, "_expected-schema-extends/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/schema-extends.json", UpdateOnly.yes, Reactive.no, "_expected-schema-extends/generated-api", false, "");
     }
 
     /**
@@ -185,7 +186,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testMasStudio() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/mas-studio.json", UpdateOnly.no, Reactive.no, "_expected-mas-studio/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/mas-studio.json", UpdateOnly.no, Reactive.no, "_expected-mas-studio/generated-api", false, "");
     }
 
     /**
@@ -193,7 +194,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testPetStore() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/petstore-openapi.json", UpdateOnly.no, Reactive.no, "_expected-petstore/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/petstore-openapi.json", UpdateOnly.no, Reactive.no, "_expected-petstore/generated-api", false, "");
     }
 
     /**
@@ -201,8 +202,19 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      */
     @Test
     public void testConstraintParameters() throws IOException {
-        doFullTest("OpenApi2JaxRsTest/constrained-parameters.json", UpdateOnly.no, Reactive.no, "_expected-constrained-parameters/generated-api", false);
+        doFullTest("OpenApi2JaxRsTest/constrained-parameters.json", UpdateOnly.no, Reactive.no, "_expected-constrained-parameters/generated-api", false, "");
     }
+
+    @Test
+    public void testGenerateFull_WithScope() throws IOException {
+        doFullTest("OpenApi2JaxRsTest/simple-type.json", UpdateOnly.no, Reactive.no, "_expected-simple-type-session-scoped/generated-api", false, "SESSION_SCOPED");
+    }
+
+    @Test
+    public void testGenerateFull_WithWrongScope() throws IOException {
+        doFullTest("OpenApi2JaxRsTest/simple-type.json", UpdateOnly.no, Reactive.no, "_expected-simple-type-wrong-scoped/generated-api", false, "WRONG_SCOPED");
+    }
+
 
     /**
      * Shared test method.
@@ -213,8 +225,8 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      * @param debug
      * @throws IOException
      */
-    private void doFullTest(String apiDef, UpdateOnly updateOnly, Reactive reactive, String expectedFilesPath, boolean debug) throws IOException {
-        doFullTest(apiDef, updateOnly, reactive, false, expectedFilesPath, "", "", debug);
+    private void doFullTest(String apiDef, UpdateOnly updateOnly, Reactive reactive, String expectedFilesPath, boolean debug, String beanScope) throws IOException {
+        doFullTest(apiDef, updateOnly, reactive, false, expectedFilesPath, "", "", debug, beanScope);
     }
 
     /**
@@ -230,7 +242,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
      * @throws IOException
      */
     private void doFullTest(String apiDef, UpdateOnly updateOnly, Reactive reactive, boolean generateCLiGenCI,
-            String expectedFilesPath, String namePrefix, String nameSuffix, boolean debug) throws IOException {
+            String expectedFilesPath, String namePrefix, String nameSuffix, boolean debug, String beanScope) throws IOException {
         JaxRsProjectSettings settings = new JaxRsProjectSettings();
         settings.codeOnly = false;
         settings.reactive = reactive == Reactive.yes;
@@ -240,6 +252,7 @@ public class OpenApi2JaxRsTest extends OpenApi2TestBase {
         settings.javaPackage = "org.example.api";
         settings.classNamePrefix = namePrefix;
         settings.classNameSuffix = nameSuffix;
+        settings.beanScope = beanScope;
 
         OpenApi2JaxRs generator = new OpenApi2JaxRs();
         generator.setSettings(settings);
